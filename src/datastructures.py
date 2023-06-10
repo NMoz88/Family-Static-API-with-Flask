@@ -13,56 +13,61 @@ class FamilyStructure:
         self.last_name = last_name
 
         # example list of members
-        self._members = []
+        self._members = [
+            {"id":self._generateId(),
+            "first_name": "John",
+            "last_name":self.last_name,
+            "age": 33,
+            "lucky_numbers":[7,13,22]
+            },
 
-        for members in group:
-            new_members = {
-                "id": self._generateId(),
-                "first_name": member["first_name"],
-                "last_name": self.last_name,
-                "age": members["age"],
-                "lucky_numbers": members["lucky_numbers"]
-            }
-            self._family.append(new_members)
-        print(self._family)
+            {"id":self._generateId(),
+            "first_name": "Jane",
+            "last_name":self.last_name,
+            "age": 35,
+            "lucky_numbers":[10,14,3]
+            }, 
+            
+             {"id":self._generateId(),
+            "first_name": "Jimy",
+            "last_name":self.last_name,
+            "age": 5,
+            "lucky_numbers":[1]
+            },
+        ]
 
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
         return randint(0, 99999999)
 
-    def add_member(self,  first_name, age, lucky_numbers):
+    def add_member(self, member, first_name, age, lucky_numbers):
         # fill this method and update the return
-        new_members = {
-        "id": self._generateId(),
-        "first_name": first_name,
-        "last_name": self.last_name,
-        "age": age,
-        "lucky_numbers": lucky_numbers
-    }
-    self._family.append(new_member)
+                new_member = {
+                    "id": self._generateId(),
+                    "first_name": first_name,
+                    "last_name": self.last_name,
+                    "age": int(member['age']),
+                    "lucky_numbers": lucky_numbers
+                }
+                self._family.append(new_member)
+
         
-    pass
+                pass
 
     def delete_members(self, id):
         # fill this method and update the return
-         
-        for member in self._family:
-            if _members["id"] == id:
-                self._family.remove(members)
-                return True
-        
-        return False
+
+        for i in self._members:
+            if i["id"] == id:
+               return i
         pass       
 
     def get_members(self, id):
         # fill this method and update the return
-        for _members in self._family:
-            if members["id"] == id:
-                return _members
-         
-       
-        return None
-        pass
+        for member in self._members:
+         if member['id'] == id :
+             return member
+    
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
